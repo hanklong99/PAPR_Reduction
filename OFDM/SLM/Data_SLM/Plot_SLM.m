@@ -1,0 +1,34 @@
+figure(1);
+semilogy(0:EbN0_dB(end),bers, 'k--x');hold on; grid on;
+semilogy(0:EbN0_dB(end),bers_SLM_1, 'k--x');hold on; grid on;
+semilogy(0:EbN0_dB(end),bers_SLM_5, 'y->');
+semilogy(0:EbN0_dB(end),bers_SLM_10, 'm-<');
+semilogy(0:EbN0_dB(end),bers_SLM_20, 'k-p');
+semilogy(0:EbN0_dB(end),bers_SLM_30, 'c-h');
+semilogy(0:EbN0_dB(end),bers_TSLM_1, 'k--x'); hold on; grid on;
+semilogy(0:EbN0_dB(end),bers_TSLM_5, 'y->');
+semilogy(0:EbN0_dB(end),bers_TSLM_10, 'm-<');
+semilogy(0:EbN0_dB(end),bers_TSLM_20, 'k-p');
+semilogy(0:EbN0_dB(end),bers_TSLM_30, 'c-h');
+%legend('SLM_1', 'SLM_5', 'SLM_10', 'SLM_20', 'SLM_30');
+legend('No SLM','SLM 1', 'SLM 5', 'SLM 10', 'SLM 20', 'SLM 30','TSLM 1', 'TSLM 5', 'TSLM 10', 'TSLM 20', 'TSLM 30');
+xlabel('Eb/N0 [dB]'), ylabel('BER'); axis([0 30 1e-5 1]);
+
+figure(2);
+marker_idx = 1:1e3:length(x_SLM_1);
+semilogy(x,ccdf,'-s','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_SLM_1,ccdf_SLM_1,'-s','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_SLM_5,ccdf_SLM_5,'*-g','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_SLM_10,ccdf_SLM_10,'>-r','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_SLM_20,ccdf_SLM_20,'<-m','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_SLM_30,ccdf_SLM_30,'h-b','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_TSLM_1,ccdf_TSLM_1,'-s','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_TSLM_5,ccdf_TSLM_5,'*-g','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_TSLM_10,ccdf_TSLM_10,'>-r','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_TSLM_20,ccdf_TSLM_20,'<-m','MarkerIndices',marker_idx);grid on; hold on;
+semilogy(x_TSLM_30,ccdf_TSLM_30,'h-y','MarkerIndices',marker_idx);grid on; hold on;
+
+xlabel('PAPR/dB'); ylabel('CCDF');
+xlim([4 13]); ylim([10e-4 1]);
+%legend('SLM_1', 'SLM_5','SLM_10','SLM_20', 'SLM_30');
+legend('No SLM','SLM 1', 'SLM 5','SLM 10','SLM 20', 'SLM 30','TSLM 1', 'TSLM 5','TSLM 10','TSLM 20', 'TSLM 30');
